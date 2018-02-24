@@ -17,7 +17,7 @@ class DeckDetails extends Component {
   }
 
   startQuiz = () => {
-
+	this.props.navigation.navigate('QuizScreen')
   }
 
   deleteDeck = () => {

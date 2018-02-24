@@ -14,6 +14,13 @@ import {
 } from 'react-native';
 
 class DeckList extends Component {
+
+
+
+  componentDidMount() {
+    console.log('DeckList')
+  }
+
   render() {
     return (
       <View style={{flex:1}}>

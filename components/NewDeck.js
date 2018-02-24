@@ -16,6 +16,10 @@ class NewDeck extends Component {
   state = {text:''}
 
 
+  componentDidMount() {
+    console.log('NewDeck')
+  }
+
   onPressLearnMore = () => {
 
   }
