@@ -5,13 +5,25 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
+  Text,
+  Button
 } from 'react-native';
 
 class DeckDetails extends Component {
+
+
+  addCard = () => {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
-
+		<Text style={[styles.text, {fontSize:18}, {margin: 8}]}>React Native</Text>
+		<Text style={[styles.text, {fontSize:12}, {marginBottom: 8}]}>2 cards</Text>
+		<Button title="Add Card" onPress={this.addCard}/>
+		<Button title="Quiz" onPress={this.addCard}/>
+		<Button title="Delete Deck" onPress={this.addCard}/>
       </View>
     );
   }
@@ -20,21 +32,12 @@ class DeckDetails extends Component {
 const styles = StyleSheet.create({
 
 	container: {
-		justifyContent:'flex-start',
-		alignSelf:'stretch',
+		// justifyContent:'center',
 		backgroundColor:'lightgray',
 		margin:10,
-		height:100,
+		// height:100,
 		borderRadius: 5,
-		flexDirection: 'row',
-		alignItems: 'center'
-	},
-
-	image:{
-		justifyContent:'flex-start',
-		alignItems:'center',
-		color:'white',
-		marginLeft:20,
+		alignItems: 'center',
 	},
 
 	view: {
@@ -46,7 +49,7 @@ const styles = StyleSheet.create({
 	},
 
 	text:{
-		margin: 4,
+
 		textAlign:'center'
 	}
 
