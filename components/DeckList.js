@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import DeckListCell from './DeckListCell'
 
 import {
   StyleSheet,
@@ -12,7 +13,7 @@ class DeckList extends Component {
   render() {
     return (
       <View style={styles.container}>
-		<Text>Hello</Text>
+		  <DeckListCell />
 	  </View>
     );
   }
@@ -26,7 +27,7 @@ export default DeckList;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fafafa',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
   },

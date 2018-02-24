@@ -20,7 +20,7 @@ const Tabs = TabNavigator({
     screen: DeckList,
     navigationOptions: {
       tabBarLabel:'Decks',
-      tabBarIcon: (({ focused, tintColor }) => <FontAwesome name='home' size={25} color={tintColor}></FontAwesome>)
+      tabBarIcon: (({ tintColor }) => <FontAwesome name='home' size={25} color={tintColor}></FontAwesome>)
     }
   },
 
@@ -28,7 +28,7 @@ const Tabs = TabNavigator({
     screen: NewDeck,
     navigationOptions: {
       tabBarLabel:'New Deck',
-      tabBarIcon: (({ focused, tintColor }) => <Ionicons name='md-add' size={25} color={tintColor}></Ionicons>)
+      tabBarIcon: (({ tintColor }) => <Ionicons name='md-add' size={25} color={tintColor}></Ionicons>)
     }
   }}, {
 
