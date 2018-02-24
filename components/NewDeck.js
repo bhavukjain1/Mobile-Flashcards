@@ -23,21 +23,21 @@ class NewDeck extends Component {
   render() {
     return (
       <View style={styles.container}>
-		<Text style={styles.text}>What is the name of your new deck card?</Text>
-		<View style={styles.textInputView}>
-			<TextInput
-	        	style={{margin:10}}
-	        	placeholder={'Enter the deck name'}
-	        	onChangeText={(text) => this.setState({text})}
-	        	value={this.state.text}
-	      	/>
-		</View>
-		<TouchableOpacity
-		   style={styles.button}
-  		   onPress={this.onPressLearnMore}
-		>
-		<Text style={{color:'white'}}>Add Deck</Text>
-		</TouchableOpacity>
+    		<Text style={styles.text}>What is the name of your new deck card?</Text>
+    		<View style={styles.textInputView}>
+  			<TextInput
+  	        	style={{margin:10}}
+  	        	placeholder={'Enter the deck name'}
+  	        	onChangeText={(text) => this.setState({text})}
+  	        	value={this.state.text}
+  	      	/>
+  		  </View>
+    		<TouchableOpacity
+    		   style={styles.button}
+      		   onPress={this.onPressLearnMore}
+    		>
+    		<Text style={{color:'white'}}>Add Deck</Text>
+    		</TouchableOpacity>
       </View>
     );
   }
@@ -46,9 +46,8 @@ class NewDeck extends Component {
 const styles = StyleSheet.create({
 container: {
     flex: 1,
-    backgroundColor: '#ffffff',
     alignItems: 'stretch',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     margin: 10
   },
   text: {

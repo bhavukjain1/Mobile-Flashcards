@@ -13,6 +13,14 @@ class DeckDetails extends Component {
 
 
   addCard = () => {
+	this.props.navigation.navigate('AddCard')
+  }
+
+  startQuiz = () => {
+
+  }
+
+  deleteDeck = () => {
 
   }
 
@@ -22,8 +30,8 @@ class DeckDetails extends Component {
 		<Text style={[styles.text, {fontSize:18}, {margin: 8}]}>React Native</Text>
 		<Text style={[styles.text, {fontSize:12}, {marginBottom: 8}]}>2 cards</Text>
 		<Button title="Add Card" onPress={this.addCard}/>
-		<Button title="Quiz" onPress={this.addCard}/>
-		<Button title="Delete Deck" onPress={this.addCard}/>
+		<Button title="Start Quiz" onPress={this.startQuiz}/>
+		<Button title="Delete Deck" onPress={this.deleteDeck}/>
       </View>
     );
   }
@@ -32,7 +40,6 @@ class DeckDetails extends Component {
 const styles = StyleSheet.create({
 
 	container: {
-		// justifyContent:'center',
 		backgroundColor:'lightgray',
 		margin:10,
 		// height:100,

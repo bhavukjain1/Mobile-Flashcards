@@ -4,6 +4,7 @@ import { TabNavigator, StackNavigator } from 'react-navigation'
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
 import DeckDetails from './components/DeckDetails'
+import AddCard from './components/AddCard'
 import {FontAwesome, Ionicons} from '@expo/vector-icons'
 
 export default class App extends React.Component {
@@ -53,6 +54,16 @@ const MainNavigator = StackNavigator({
 
   DeckDetails: {
     screen: DeckDetails,
+    navigationOptions: ({navigation}) =>  ({
+        title:'Deck Details'
+    })
+  },
+
+  AddCard: {
+    screen: AddCard,
+    navigationOptions: ({navigation}) => ({
+      title:'Add Card'
+    })
   }
 })
 

@@ -13,7 +13,7 @@ import {
 class DeckListCell extends Component {
   render() {
     return (
-      <View style={styles.container} onPress={console.log('Bhavuk')}>
+      <View style={styles.container}>
       	<MaterialIcons
       		 style={styles.image}
               name='credit-card'
