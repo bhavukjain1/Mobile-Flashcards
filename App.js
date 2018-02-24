@@ -1,14 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { TabNavigator } from 'react-navigation'
+import { TabNavigator, StackNavigator } from 'react-navigation'
 import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
+import DeckDetails from './components/DeckDetails'
 import {FontAwesome, Ionicons} from '@expo/vector-icons'
 
 export default class App extends React.Component {
   render() {
     return (
-        <Tabs />
+        <MainNavigator />
     )
   }
 }
@@ -20,7 +21,8 @@ const Tabs = TabNavigator({
     screen: DeckList,
     navigationOptions: {
       tabBarLabel:'Decks',
-      tabBarIcon: (({ tintColor }) => <FontAwesome name='home' size={25} color={tintColor}></FontAwesome>)
+      tabBarIcon: (({ tintColor }) => <FontAwesome name='home' size={25} color={tintColor}></FontAwesome>),
+      title:'Decks'
     }
   },
 
@@ -28,7 +30,8 @@ const Tabs = TabNavigator({
     screen: NewDeck,
     navigationOptions: {
       tabBarLabel:'New Deck',
-      tabBarIcon: (({ tintColor }) => <Ionicons name='md-add' size={25} color={tintColor}></Ionicons>)
+      tabBarIcon: (({ tintColor }) => <Ionicons name='md-add' size={25} color={tintColor}></Ionicons>),
+      title:'New Deck'
     }
   }}, {
 
@@ -37,6 +40,20 @@ const Tabs = TabNavigator({
     inactiveTintColor:'gray'
   }
 
+})
+
+const MainNavigator = StackNavigator({
+
+  Home:{
+    screen: Tabs,
+    navigationOptions: ({navigation}) =>  ({
+
+    })
+  },
+
+  DeckDetails: {
+    screen: DeckDetails,
+  }
 })
 
 const styles = StyleSheet.create({
