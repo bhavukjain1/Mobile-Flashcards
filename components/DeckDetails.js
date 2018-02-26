@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import { deleteDeck } from '../api'
 
 import {
   StyleSheet,
@@ -21,6 +22,9 @@ class DeckDetails extends Component {
   }
 
   deleteDeck = () => {
+
+	deleteDeck(this.props.navigation.state.params.item.deckName)
+  	this.props.navigation.goBack()
 
   }
 

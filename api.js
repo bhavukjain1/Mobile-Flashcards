@@ -25,6 +25,18 @@ export function getDecks() {
 }
 
 
+export function deleteDeck(deckName) {
+
+	AsyncStorage.getItem(QUIZ_STORAGE_KEY)
+			.then((results) => {
+				const data = JSON.parse(results)
+				data[deckName] = undefined
+				delete data[deckName]
+
+				AsyncStorage.setItem(QUIZ_STORAGE_KEY, JSON.stringify(data))
+			})
+}
+
 
 
 export function clearAll() {
