@@ -1,3 +1,5 @@
+import './ReactotronConfig'
+import Reactotron from 'reactotron-react-native'
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { TabNavigator, StackNavigator } from 'react-navigation'
@@ -10,6 +12,7 @@ import {FontAwesome, Ionicons} from '@expo/vector-icons'
 
 export default class App extends React.Component {
   render() {
+    Reactotron.log('hello bhavuk')
     return (
         <MainNavigator />
     )
