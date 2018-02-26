@@ -20,8 +20,8 @@ class DeckListCell extends Component {
               size={35}
         />
         <View style={styles.view}>
-        	<Text style={styles.text}>React Native</Text>
-        	<Text style={[styles.text, {fontSize:12}]}>3 Cards</Text>
+        	<Text style={styles.text}>{this.props.item.deckName}</Text>
+        	<Text style={[styles.text, {fontSize:12}]}>{this.props.item.totalDeckCards} Cards</Text>
         </View>
       </View>
     );

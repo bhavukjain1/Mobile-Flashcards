@@ -1,6 +1,9 @@
 'use strict';
 
 import React, { Component } from 'react';
+import {Alert} from 'react-native'
+import { addNewDeck, clearAll } from '../api'
+
 
 import {
   StyleSheet,
@@ -20,8 +23,27 @@ class NewDeck extends Component {
     console.log('NewDeck')
   }
 
-  onPressLearnMore = () => {
+  addDeckToStorage = () => {
 
+      if (this.state.text === '' ) {
+
+        Alert.alert(
+          'Message',
+          'Please enter the deck name',
+          [
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+           ],
+          { cancelable: false }
+        )
+        return
+      }
+
+      addNewDeck(this.state.text)
+  }
+
+  componentDidMount() {
+
+    // clearAll()
   }
 
   render() {
@@ -38,7 +60,7 @@ class NewDeck extends Component {
   		  </View>
     		<TouchableOpacity
     		   style={styles.button}
-      		   onPress={this.onPressLearnMore}
+      		   onPress={this.addDeckToStorage}
     		>
     		<Text style={{color:'white'}}>Add Deck</Text>
     		</TouchableOpacity>

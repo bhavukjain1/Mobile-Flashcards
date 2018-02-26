@@ -12,7 +12,6 @@ import {FontAwesome, Ionicons} from '@expo/vector-icons'
 
 export default class App extends React.Component {
   render() {
-    Reactotron.log('hello bhavuk')
     return (
         <MainNavigator />
     )
