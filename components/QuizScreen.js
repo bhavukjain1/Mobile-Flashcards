@@ -13,6 +13,16 @@ import {
 } from 'react-native';
 
 class QuizScreen extends Component {
+
+
+	optionSelected = (index) => {
+
+		Reactotron.log(index)
+		this.list.scrollToIndex({index:index})
+	}
+
+
+
   render() {
 
 	var totalCards = this.props.navigation.state.params.item.totalDeckCards
@@ -23,20 +33,20 @@ class QuizScreen extends Component {
 		Reactotron.log(item)
 		item['key'] = item.question
 		return item
-	}
-	)
 
-	Reactotron.log(items)
+	  })
+
     return (
      <View style={{flex:1}}>
 		<FlatList
-			scrollEnabled={true}
+			scrollEnabled={false}
 			horizontal={true}
             data={items}
+            ref={(ref) => { this.list = ref }}
             renderItem={({item, index, separators}) => (
 
             	<View style={styles.container}>
-                	<QuizCell item={item} index={index} totalCards={totalCards}></QuizCell>
+                	<QuizCell item={item} index={index} totalCards={totalCards} scroll={this.optionSelected}></QuizCell>
                 </View>
             )}
           />
