@@ -1,4 +1,5 @@
 import { AsyncStorage } from 'react-native'
+import Reactotron from 'reactotron-react-native'
 
 const QUIZ_STORAGE_KEY = 'MobileFlashcards:quiz'
 
@@ -35,6 +36,21 @@ export function deleteDeck(deckName) {
 
 				AsyncStorage.setItem(QUIZ_STORAGE_KEY, JSON.stringify(data))
 			})
+}
+
+export function addCard(deckName,card) {
+
+	// Reactotron.log(deckName)
+	// Reactotron.log(card)
+
+	// return
+
+	AsyncStorage.getItem(QUIZ_STORAGE_KEY)
+		.then((results) => {
+			const data = JSON.parse(results)
+			data[deckName].questions = [...data[deckName].questions, card]
+			AsyncStorage.setItem(QUIZ_STORAGE_KEY, JSON.stringify(data))
+		})
 }
 
 

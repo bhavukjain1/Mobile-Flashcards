@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import Reactotron from 'reactotron-react-native'
 
 import {
   StyleSheet,
@@ -10,14 +11,16 @@ import {
 } from 'react-native';
 
 class QuizCell extends Component {
+
   render() {
+
     return (
      <View style={styles.container}>
-		<Text style={[{margin:8}, {fontSize:16}]}>1/4</Text>
+		<Text style={[{margin:8}, {fontSize:16}]}>{this.props.index + 1}/{this.props.totalCards}</Text>
 		<View style={styles.view}>
 
 			<View style={[{flex:1}, {justifyContent:'center'}]}>
-				<Text style={[{textAlign:'center'}, {margin: 10}]}>Hello</Text>
+				<Text style={[{textAlign:'center'}, {margin: 10}]}>{this.props.item.question}</Text>
 			</View>
 			<TouchableOpacity style={styles.touchableOpacity}>
 				<Text style={[{color:'#0076FF'},{fontSize:14}]}>Question</Text>

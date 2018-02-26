@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import { addCard } from '../api'
 
 import {
   StyleSheet,
@@ -14,6 +15,15 @@ class AddCard extends Component {
 
 
   state = {question:'',answer:''}
+
+  addNewCard = () => {
+
+  	var key = this.props.navigation.state.params.item.deckName
+	var question = this.state
+
+  	addCard(key, question)
+  }
+
 
   render() {
     return (
@@ -38,7 +48,7 @@ class AddCard extends Component {
 
 		 <TouchableOpacity
 		   style={styles.button}
-  		   onPress={this.onPressLearnMore}
+  		   onPress={this.addNewCard}
     	 >
     	    <Text style={{color:'white'}}>Add Card</Text>
     	</TouchableOpacity>

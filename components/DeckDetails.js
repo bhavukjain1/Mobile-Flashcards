@@ -14,11 +14,17 @@ class DeckDetails extends Component {
 
 
   addCard = () => {
-	this.props.navigation.navigate('AddCard')
+
+  	const item = this.props.navigation.state.params.item
+
+	this.props.navigation.navigate('AddCard', {item})
   }
 
   startQuiz = () => {
-	this.props.navigation.navigate('QuizScreen')
+
+  	const item = this.props.navigation.state.params.item
+
+	this.props.navigation.navigate('QuizScreen', {item})
   }
 
   deleteDeck = () => {

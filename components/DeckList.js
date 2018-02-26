@@ -27,7 +27,7 @@ class DeckList extends Component {
 
     getDecks().then((data) => {
       Object.keys(data).forEach(function(key) {
-        var newObj = {deckName:key, totalDeckCards:data[key].questions.length, key:key}
+        var newObj = {deckName:key, totalDeckCards:data[key].questions.length, key:key, questions:data[key].questions}
         decks.push(newObj)
       })
 

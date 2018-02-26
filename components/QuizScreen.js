@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import QuizCell from './QuizCell'
 import {Dimensions} from 'react-native'
+import Reactotron from 'reactotron-react-native'
 
 import {
   StyleSheet,
@@ -13,16 +14,29 @@ import {
 
 class QuizScreen extends Component {
   render() {
+
+	var totalCards = this.props.navigation.state.params.item.totalDeckCards
+	var questions = this.props.navigation.state.params.item.questions
+
+	var items = questions.map(item => {
+
+		Reactotron.log(item)
+		item['key'] = item.question
+		return item
+	}
+	)
+
+	Reactotron.log(items)
     return (
      <View style={{flex:1}}>
 		<FlatList
 			scrollEnabled={true}
 			horizontal={true}
-            data={[{value:'1', key:'1'}, {value:'1', key:'2'}, {value:'1', key:'3'}]}
-            renderItem={({item, separators}) => (
+            data={items}
+            renderItem={({item, index, separators}) => (
 
             	<View style={styles.container}>
-                	<QuizCell></QuizCell>
+                	<QuizCell item={item} index={index} totalCards={totalCards}></QuizCell>
                 </View>
             )}
           />
