@@ -30,7 +30,7 @@ class DeckDetails extends Component {
   deleteDeck = () => {
 
 	deleteDeck(this.props.navigation.state.params.item.deckName)
-  	this.props.navigation.goBack()
+  	this.props.navigation.popToTop()
 
   }
 

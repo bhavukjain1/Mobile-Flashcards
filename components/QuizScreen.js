@@ -18,15 +18,19 @@ class QuizScreen extends Component {
 
 	optionSelected = (index,val) => {
 
-		this.setState((state) => {
-			correctAnswers:state.correctAnswers + val
+		this.setState({
+			correctAnswers:this.state.correctAnswers + val
+		}, () => {
+			var totalCards = this.props.navigation.state.params.item.totalDeckCards
+			if (index === totalCards) {
+				this.props.navigation.navigate('ScoreView', {correct:this.state.correctAnswers,totalQuestions:totalCards})
+			}else {
+				this.list.scrollToIndex({index:index})
+			}
+
 		})
 
-		if (index === this.props.navigation.state.params.item.totalDeckCards) {
 
-		}else {
-			this.list.scrollToIndex({index:index})
-		}
 	}
 
 

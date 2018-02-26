@@ -8,6 +8,7 @@ import NewDeck from './components/NewDeck'
 import DeckDetails from './components/DeckDetails'
 import AddCard from './components/AddCard'
 import QuizScreen from './components/QuizScreen'
+import ScoreView from './components/ScoreView'
 import {FontAwesome, Ionicons} from '@expo/vector-icons'
 
 export default class App extends React.Component {
@@ -73,6 +74,15 @@ const MainNavigator = StackNavigator({
     screen: QuizScreen,
     navigationOptions: ({navigation}) => ({
       title:'Quiz'
+    })
+  },
+
+  ScoreView: {
+    screen: ScoreView,
+    navigationOptions: ({navigation}) => ({
+      title:'Score',
+      headerLeft:null,
+      gesturesEnabled:false
     })
   }
 })
