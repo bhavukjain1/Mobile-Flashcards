@@ -27,8 +27,8 @@ class DeckDetails extends Component {
   render() {
     return (
       <View style={styles.container}>
-		<Text style={[styles.text, {fontSize:18}, {margin: 8}]}>React Native</Text>
-		<Text style={[styles.text, {fontSize:12}, {marginBottom: 8}]}>2 cards</Text>
+		<Text style={[styles.text, {fontSize:18}, {margin: 8}]}>{this.props.navigation.state.params.item.deckName}</Text>
+		<Text style={[styles.text, {fontSize:12}, {marginBottom: 8}]}>{this.props.navigation.state.params.item.totalDeckCards} cards</Text>
 		<Button title="Add Card" onPress={this.addCard}/>
 		<Button title="Start Quiz" onPress={this.startQuiz}/>
 		<Button title="Delete Deck" onPress={this.deleteDeck}/>

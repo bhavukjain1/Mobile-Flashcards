@@ -43,7 +43,7 @@ class DeckList extends Component {
             data={this.state.decks}
             renderItem={({item, separators}) => (
 
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckDetails')}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckDetails', {item})}>
                 <DeckListCell item={item}></DeckListCell>
             </TouchableOpacity>
             )}
