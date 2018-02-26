@@ -14,11 +14,19 @@ import {
 
 class QuizScreen extends Component {
 
+	state = {correctAnswers:0}
 
-	optionSelected = (index) => {
+	optionSelected = (index,val) => {
 
-		Reactotron.log(index)
-		this.list.scrollToIndex({index:index})
+		this.setState((state) => {
+			correctAnswers:state.correctAnswers + val
+		})
+
+		if (index === this.props.navigation.state.params.item.totalDeckCards) {
+
+		}else {
+			this.list.scrollToIndex({index:index})
+		}
 	}
 
 

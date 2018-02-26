@@ -29,7 +29,7 @@ class QuizCell extends Component {
      <View style={styles.container}>
 		<Text style={[{margin:8}, {fontSize:16}]}>{this.props.index + 1}/{this.props.totalCards}</Text>
 		{renderView}
-		<TouchableOpacity style={styles.touchableOpacity} onPress={() => this.props.scroll(this.props.index + 1)}>
+		<TouchableOpacity style={styles.touchableOpacity} onPress={() => this.props.scroll(this.props.index + 1, 1)}>
 			<Text style={[{color:'#0076FF'},{fontSize:16}, {margin: 10}]}>Yes, I got it</Text>
 		</TouchableOpacity>
 		<TouchableOpacity style={styles.touchableOpacity} >
