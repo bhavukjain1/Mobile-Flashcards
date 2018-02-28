@@ -2,96 +2,12 @@ import './ReactotronConfig'
 import Reactotron from 'reactotron-react-native'
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { TabNavigator, StackNavigator } from 'react-navigation'
-import DeckList from './components/DeckList'
-import NewDeck from './components/NewDeck'
-import DeckDetails from './components/DeckDetails'
-import AddCard from './components/AddCard'
-import QuizScreen from './components/QuizScreen'
-import ScoreView from './components/ScoreView'
-import {FontAwesome, Ionicons} from '@expo/vector-icons'
+import { Router } from './components/Router'
 
 export default class App extends React.Component {
   render() {
     return (
-        <MainNavigator />
+        <Router />
     )
   }
 }
-
-
-const Tabs = TabNavigator({
-
-  Decks: {
-    screen: DeckList,
-    navigationOptions: {
-      tabBarLabel:'Decks',
-      tabBarIcon: (({ tintColor }) => <FontAwesome name='home' size={25} color={tintColor}></FontAwesome>),
-      title:'Decks'
-    }
-  },
-
-  NewDeck: {
-    screen: NewDeck,
-    navigationOptions: {
-      tabBarLabel:'New Deck',
-      tabBarIcon: (({ tintColor }) => <Ionicons name='md-add' size={25} color={tintColor}></Ionicons>),
-      title:'New Deck'
-    }
-  }}, {
-
-  tabBarOptions: {
-    activeTintColor: 'black',
-    inactiveTintColor:'gray'
-  }
-
-})
-
-const MainNavigator = StackNavigator({
-
-  Home:{
-    screen: Tabs,
-    navigationOptions: ({navigation}) =>  ({
-
-    })
-  },
-
-  DeckDetails: {
-    screen: DeckDetails,
-    navigationOptions: ({navigation}) =>  ({
-        title:'Deck Details'
-    })
-  },
-
-  AddCard: {
-    screen: AddCard,
-    navigationOptions: ({navigation}) => ({
-      title:'Add Card'
-    })
-  },
-
-  QuizScreen: {
-    screen: QuizScreen,
-    navigationOptions: ({navigation}) => ({
-      title:'Quiz'
-    })
-  },
-
-  ScoreView: {
-    screen: ScoreView,
-    navigationOptions: ({navigation}) => ({
-      title:'Score',
-      headerLeft:null,
-      gesturesEnabled:false
-    })
-  }
-})
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
