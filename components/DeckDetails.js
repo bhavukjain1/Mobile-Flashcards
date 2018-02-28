@@ -1,47 +1,71 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { deleteDeck } from '../api'
 
 import {
   StyleSheet,
   View,
   Text,
-  Button
+  Button,
+  Alert
 } from 'react-native';
+
+import { connect } from 'react-redux'
+import { deleteDeck } from '../Actions'
+
+import Reactotron from 'reactotron-react-native'
 
 class DeckDetails extends Component {
 
 
   addCard = () => {
 
-  	const item = this.props.navigation.state.params.item
-
+  	const item = this.props.deck
 	this.props.navigation.navigate('AddCard', {item})
   }
 
   startQuiz = () => {
 
-  	const item = this.props.navigation.state.params.item
+  	const item = this.props.deck
 
+  	if(item.questions.length === 0) {
+		Alert.alert(
+	      'Message',
+	      'Please add a card to continue',
+	      [
+	        {text: 'OK', onPress: () => console.log('OK Pressed')},
+	       ],
+	      { cancelable: false }
+		 )
+  		return
+  	}
 	this.props.navigation.navigate('QuizScreen', {item})
   }
 
-  deleteDeck = () => {
+  deleteDeckFromList = () => {
 
-	deleteDeck(this.props.navigation.state.params.item.deckName)
+	const title = this.props.deck.title
+
+	this.props.dispatch(deleteDeck(title))
   	this.props.navigation.popToTop()
 
   }
 
   render() {
+
+  	const {deck} = this.props
+
     return (
       <View style={styles.container}>
-		<Text style={[styles.text, {fontSize:18}, {margin: 8}]}>{this.props.navigation.state.params.item.deckName}</Text>
-		<Text style={[styles.text, {fontSize:12}, {marginBottom: 8}]}>{this.props.navigation.state.params.item.totalDeckCards} cards</Text>
-		<Button title="Add Card" onPress={this.addCard}/>
-		<Button title="Start Quiz" onPress={this.startQuiz}/>
-		<Button title="Delete Deck" onPress={this.deleteDeck}/>
+      {deck &&
+      	<View>
+			<Text style={[styles.text, {fontSize:18}, {margin: 8}]}>{this.props.deck.title}</Text>
+			<Text style={[styles.text, {fontSize:12}, {marginBottom: 8}]}>{this.props.deck.questions.length} cards</Text>
+			<Button title="Add Card" onPress={this.addCard}/>
+			<Button title="Start Quiz" onPress={this.startQuiz}/>
+
+		</View>
+	  }
       </View>
     );
   }
@@ -73,4 +97,11 @@ const styles = StyleSheet.create({
 });
 
 
-export default DeckDetails;
+function mapStateToProps(state, ownProps) {
+
+	return{
+		deck:state[ownProps.navigation.state.params.item.title]
+	}
+}
+
+export default connect(mapStateToProps)(DeckDetails);

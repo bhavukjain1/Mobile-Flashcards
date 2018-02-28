@@ -20,8 +20,8 @@ class DeckListCell extends Component {
               size={35}
         />
         <View style={styles.view}>
-        	<Text style={styles.text}>{this.props.item.deckName}</Text>
-        	<Text style={[styles.text, {fontSize:12}]}>{this.props.item.totalDeckCards} Cards</Text>
+        	<Text style={styles.text}>{this.props.item.title}</Text>
+        	<Text style={[styles.text, {fontSize:12}]}>{this.props.item.questions.length} Cards</Text>
         </View>
       </View>
     );

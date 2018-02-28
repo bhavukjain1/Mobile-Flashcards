@@ -32,7 +32,7 @@ class QuizCell extends Component {
 		<TouchableOpacity style={styles.touchableOpacity} onPress={() => this.props.scroll(this.props.index + 1, 1)}>
 			<Text style={[{color:'#0076FF'},{fontSize:16}, {margin: 10}]}>Yes, I got it</Text>
 		</TouchableOpacity>
-		<TouchableOpacity style={styles.touchableOpacity} >
+		<TouchableOpacity style={styles.touchableOpacity} onPress={() => this.props.scroll(this.props.index + 1, 0)}>
 			<Text style={[{color:'#0076FF'},{fontSize:16}, {margin: 10}]}>Nope, I still need to learn</Text>
 		</TouchableOpacity>
 

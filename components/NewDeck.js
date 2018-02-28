@@ -1,8 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import {Alert} from 'react-native'
-import { addNewDeck, clearAll } from '../api'
+import { connect } from 'react-redux'
 
 
 import {
@@ -10,18 +9,17 @@ import {
   View,
   Text,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  Alert
 } from 'react-native';
+
+import { createDeck } from '../Actions'
 
 class NewDeck extends Component {
 
 
   state = {text:''}
 
-
-  componentDidMount() {
-    console.log('NewDeck')
-  }
 
   addDeckToStorage = () => {
 
@@ -38,12 +36,17 @@ class NewDeck extends Component {
         return
       }
 
-      addNewDeck(this.state.text)
-  }
+      this.props.dispatch(createDeck(this.state.text))
+      this.setState({text:''})
+      Alert.alert(
+          'Message',
+          'Deck Added Successfully!',
+          [
+            {text: 'OK', onPress: () => console.log('OK Pressed')},
+           ],
+          { cancelable: false }
+        )
 
-  componentDidMount() {
-
-    // clearAll()
   }
 
   render() {
@@ -97,4 +100,4 @@ container: {
 });
 
 
-export default NewDeck;
+export default connect()(NewDeck);

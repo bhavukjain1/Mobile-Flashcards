@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import DeckListCell from './DeckListCell'
 import { Constants } from 'expo'
-import { getDecks } from '../api'
 
 import Reactotron from 'reactotron-react-native'
 
@@ -16,35 +15,23 @@ import {
   TouchableOpacity
 } from 'react-native';
 
+import { connect } from 'react-redux'
+
 class DeckList extends Component {
 
-  state = {decks:[]}
-
-  componentDidMount() {
-    console.log('DeckList')
-
-    var decks = Array()
-
-    getDecks().then((data) => {
-      Object.keys(data).forEach(function(key) {
-        var newObj = {deckName:key, totalDeckCards:data[key].questions.length, key:key, questions:data[key].questions}
-        decks.push(newObj)
-      })
-
-        this.setState({decks})
-
-    })
-  }
-
   render() {
+
+    const {decks} = this.props
+
     return (
       <View style={{flex:1}}>
           <FlatList
-            data={this.state.decks}
+            data={Object.keys(decks)}
+            keyExtractor={item => item}
             renderItem={({item, separators}) => (
 
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckDetails', {item})}>
-                <DeckListCell item={item}></DeckListCell>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('DeckDetails', {item:decks[item]})}>
+                <DeckListCell item={decks[item]}></DeckListCell>
             </TouchableOpacity>
             )}
           />
@@ -54,8 +41,21 @@ class DeckList extends Component {
 }
 
 
-export default DeckList;
+ function mapStateToProps(state) {
 
+    var deckList = {
+      ...state
+    }
+
+    delete deckList['_persist']
+
+    return {
+      decks: deckList
+    }
+ }
+
+
+export default connect(mapStateToProps)(DeckList)
 
 
 const styles = StyleSheet.create({

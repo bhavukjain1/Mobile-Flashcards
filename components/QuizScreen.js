@@ -21,7 +21,7 @@ class QuizScreen extends Component {
 		this.setState({
 			correctAnswers:this.state.correctAnswers + val
 		}, () => {
-			var totalCards = this.props.navigation.state.params.item.totalDeckCards
+			var totalCards = this.props.navigation.state.params.item.questions.length
 			if (index === totalCards) {
 				this.props.navigation.navigate('ScoreView', {correct:this.state.correctAnswers,totalQuestions:totalCards})
 			}else {
@@ -30,31 +30,23 @@ class QuizScreen extends Component {
 
 		})
 
-
 	}
 
 
 
   render() {
 
-	var totalCards = this.props.navigation.state.params.item.totalDeckCards
+	var totalCards = this.props.navigation.state.params.item.questions.length
 	var questions = this.props.navigation.state.params.item.questions
-
-	var items = questions.map(item => {
-
-		Reactotron.log(item)
-		item['key'] = item.question
-		return item
-
-	  })
 
     return (
      <View style={{flex:1}}>
 		<FlatList
 			scrollEnabled={false}
 			horizontal={true}
-            data={items}
+            data={questions}
             ref={(ref) => { this.list = ref }}
+            keyExtractor={item => item.question}
             renderItem={({item, index, separators}) => (
 
             	<View style={styles.container}>

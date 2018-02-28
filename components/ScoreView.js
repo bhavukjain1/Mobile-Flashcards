@@ -13,11 +13,10 @@ class ScoreView extends Component {
   render() {
     return (
       <View style={{margin:10}}>
-		<Text>You gave {this.props.navigation.state.params.correct} out of {this.props.navigation.state.params.totalQuestions} correct answers.</Text>
-		<TouchableOpacity onPress={this.goBack}>
-			<Text style={[{color:'#0076FF'},{fontSize:16}, {margin: 30}, {alignSelf:'center'}]}>Done</Text>
-		</TouchableOpacity>
-
+    		<Text>You gave {this.props.navigation.state.params.correct} out of {this.props.navigation.state.params.totalQuestions} correct answers.</Text>
+    		<TouchableOpacity onPress={this.goBack}>
+    			<Text style={[{color:'#0076FF'},{fontSize:16}, {margin: 30}, {alignSelf:'center'}]}>Done</Text>
+    		</TouchableOpacity>
       </View>
     );
   }
@@ -26,10 +25,5 @@ class ScoreView extends Component {
   	this.props.navigation.popToTop()
   }
 }
-
-const styles = StyleSheet.create({
-
-});
-
 
 export default ScoreView;

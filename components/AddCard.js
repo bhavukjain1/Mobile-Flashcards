@@ -1,15 +1,18 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { addCard } from '../api'
 
 import {
   StyleSheet,
   View,
   TextInput,
   TouchableOpacity,
-  Text
+  Text,
+  Alert
 } from 'react-native';
+
+import { connect } from 'react-redux'
+import { addCard } from '../Actions'
 
 class AddCard extends Component {
 
@@ -18,10 +21,38 @@ class AddCard extends Component {
 
   addNewCard = () => {
 
-  	var key = this.props.navigation.state.params.item.deckName
+  	var title = this.props.navigation.state.params.item.title
 	var question = this.state
 
-  	addCard(key, question)
+	if (question.question === '' || question.answer === '') {
+
+		Alert.alert(
+	      'Message',
+	      'Please Enter all the fields',
+	      [
+	        {text: 'OK', onPress: () => console.log('OK Pressed')},
+	       ],
+	      { cancelable: false }
+		 )
+
+		return
+	}
+
+  	this.props.dispatch(addCard({
+  		deckName:title,
+  		question:question.question,
+  		answer:question.answer
+  	}))
+
+  	this.setState({question:'',answer:''})
+	Alert.alert(
+      'Message',
+      'Card Added to Deck Successfully!',
+      [
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+       ],
+      { cancelable: false }
+	 )
   }
 
 
@@ -84,4 +115,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default AddCard;
+export default connect()(AddCard)
