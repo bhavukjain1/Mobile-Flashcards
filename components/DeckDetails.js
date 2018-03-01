@@ -21,7 +21,7 @@ class DeckDetails extends Component {
   addCard = () => {
 
   	const item = this.props.deck
-	this.props.navigation.navigate('AddCard', {item})
+	this.props.navigation.navigate('AddCard', {item}, null, 'DeckDetails')
   }
 
   startQuiz = () => {
@@ -39,7 +39,7 @@ class DeckDetails extends Component {
 		 )
   		return
   	}
-	this.props.navigation.navigate('QuizScreen', {item})
+	this.props.navigation.navigate('QuizScreen', {item}, null, 'DeckDetails')
   }
 
   deleteDeckFromList = () => {

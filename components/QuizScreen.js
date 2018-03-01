@@ -23,7 +23,9 @@ class QuizScreen extends Component {
 		}, () => {
 			var totalCards = this.props.navigation.state.params.item.questions.length
 			if (index === totalCards) {
+				this.setState({correctAnswers:0})
 				this.props.navigation.navigate('ScoreView', {correct:this.state.correctAnswers,totalQuestions:totalCards})
+				this.list.scrollToIndex({index:0})
 			}else {
 				this.list.scrollToIndex({index:index})
 			}

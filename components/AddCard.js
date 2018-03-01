@@ -44,15 +44,7 @@ class AddCard extends Component {
   		answer:question.answer
   	}))
 
-  	this.setState({question:'',answer:''})
-	Alert.alert(
-      'Message',
-      'Card Added to Deck Successfully!',
-      [
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
-       ],
-      { cancelable: false }
-	 )
+	this.props.navigation.pop()
   }
 
 

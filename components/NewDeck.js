@@ -37,15 +37,8 @@ class NewDeck extends Component {
       }
 
       this.props.dispatch(createDeck(this.state.text))
+      this.props.navigation.navigate('DeckDetails', {item:{title:this.state.text}})
       this.setState({text:''})
-      Alert.alert(
-          'Message',
-          'Deck Added Successfully!',
-          [
-            {text: 'OK', onPress: () => console.log('OK Pressed')},
-           ],
-          { cancelable: false }
-        )
 
   }
 

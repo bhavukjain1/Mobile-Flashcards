@@ -57,7 +57,8 @@ export const Router = StackNavigator({
   DeckDetails: {
     screen: DeckDetails,
     navigationOptions: ({navigation}) =>  ({
-        title:'Deck Details'
+        title:'Deck Details',
+        key:'DeckDetails',
     })
   },
 
