@@ -8,3 +8,5 @@ To run this project right away:
 
 - install all project dependencies with `yarn add`
 - start the development server with `yarn start`
+
+Tested on iOS
